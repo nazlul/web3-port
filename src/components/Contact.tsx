@@ -28,7 +28,6 @@ const Contact = () => {
   const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -38,7 +37,6 @@ const Contact = () => {
         subject: '',
         message: ''
       });
-      // Reset success message after 5 seconds
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
@@ -99,7 +97,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-xl mb-1">Email</h3>
-                  <p className="text-gray-300">hello@example.com</p>
+                  <p className="text-gray-300">eng.nazrizan@gmail.com</p>
                 </div>
               </div>
             </motion.div>
@@ -110,7 +108,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-xl mb-1">Phone</h3>
-                  <p className="text-gray-300">+1 (555) 123-4567</p>
+                  <p className="text-gray-300">+91 9539665011</p>
                 </div>
               </div>
             </motion.div>
@@ -121,7 +119,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-xl mb-1">Location</h3>
-                  <p className="text-gray-300">San Francisco, CA</p>
+                  <p className="text-gray-300">Kozhikode, Kerala, India</p>
                 </div>
               </div>
             </motion.div>

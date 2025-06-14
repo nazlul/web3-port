@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import MagneticCard from './ui/MagneticCard';
 type SkillCategory = 'frontend' | 'backend' | 'tools';
 
 const Skills = () => {
@@ -154,6 +155,7 @@ const Skills = () => {
               </motion.div>)}
           </motion.div>
         </div>
+        <MagneticCard>
         <motion.div initial={{
         opacity: 0,
         y: 30
@@ -166,7 +168,8 @@ const Skills = () => {
       }} transition={{
         duration: 0.8,
         delay: 0.5
-      }} className="bg-slate-700 rounded-xl p-8 shadow-xl">
+      }} 
+      className="rounded-xl">
           <h3 className="text-xl font-bold mb-4 text-center">
             Skills Overview
           </h3>
@@ -257,6 +260,7 @@ const Skills = () => {
             </div>
           </div>
         </motion.div>
+        </MagneticCard>
       </div>
     </section>;
 };

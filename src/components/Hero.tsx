@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 const Hero = () => {
   const typingRef = useRef<HTMLDivElement>(null);
@@ -29,8 +29,11 @@ const Hero = () => {
       }} transition={{
         duration: 0.8
       }} className="mb-6">
-          <span className="text-lg md:text-xl text-purple-400">Hello, I'm</span>
+          <span className="text-lg md:text-xl text-[#fffde8]">Hello, I'm</span>
         </motion.div>
+        <span className="text-4xl md:text-6xl lg:text-7xl mb-4 font-bold text-[#fffde8]">
+            Nazlul Rizan
+          </span>
         <motion.h1 initial={{
         opacity: 0,
         y: 20
@@ -40,9 +43,9 @@ const Hero = () => {
       }} transition={{
         duration: 0.8,
         delay: 0.3
-      }} className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4">
-          <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
-            Creative Developer
+      }} className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
+          <span className="text-[#fffde8]">
+            Web Developer
           </span>
         </motion.h1>
         <motion.div initial={{
@@ -52,7 +55,7 @@ const Hero = () => {
       }} transition={{
         duration: 1,
         delay: 0.8
-      }} className="text-xl md:text-3xl mb-8 text-gray-300 h-10" ref={typingRef}>
+      }} className="text-xl md:text-3xl mb-8 text-[#fffde8]/80 h-10" ref={typingRef}>
           |
         </motion.div>
         <motion.div initial={{
@@ -65,10 +68,10 @@ const Hero = () => {
         duration: 0.8,
         delay: 1.5
       }} className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4">
-          <a href="#projects" className="px-8 py-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full text-white font-medium transition-transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20">
+          <a href="#projects" className="px-8 py-3 bg-[#fffde8] hover:bg-[#fffde8]/80 rounded-full text-[#831010] font-medium transition-transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20">
             View My Work
           </a>
-          <a href="#contact" className="px-8 py-3 border border-purple-500 rounded-full text-white font-medium transition-all hover:bg-purple-500/10">
+          <a href="#contact" className="px-8 py-3 border border-[#fffde8] rounded-full text-[#fffde8] font-medium transition-all hover:bg-[#24243e]/10">
             Contact Me
           </a>
         </motion.div>
@@ -81,9 +84,9 @@ const Hero = () => {
       duration: 1,
       delay: 2
     }} className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-        <a href="#about" className="flex flex-col items-center text-gray-400 hover:text-white transition-colors">
+        <a href="#about" className="flex flex-col items-center text-[#fffde8] hover:text-[#fffde8]/80 transition-colors">
           <span className="mb-2">Scroll Down</span>
-          <div className="w-5 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-1">
+          <div className="w-5 h-10 border-2 border-[#fffde8] rounded-full flex justify-center pt-1">
             <motion.div animate={{
             y: [0, 12, 0],
             opacity: [0, 1, 0]
@@ -91,7 +94,7 @@ const Hero = () => {
             duration: 1.5,
             repeat: Infinity,
             repeatType: 'loop'
-          }} className="w-1.5 h-1.5 bg-white rounded-full" />
+          }} className="w-1.5 h-1.5 bg-[#fffde8] rounded-full" />
           </div>
         </a>
       </motion.div>
