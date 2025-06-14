@@ -115,7 +115,7 @@ const Skills = () => {
     id: 'tools',
     label: 'Tools & Others'
   }];
-  return <section id="skills" className="py-20 px-4 bg-slate-800/50 relative z-10">
+  return <section id="skills" className="py-20 px-4 bg-[#fffde8] relative z-10">
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{
         opacity: 0,
@@ -127,30 +127,26 @@ const Skills = () => {
         duration: 0.8
       }} className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
-            <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#a9170a] to-[#831010] bg-clip-text text-transparent">
               My Skills
             </span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mb-6"></div>
-          <p className="text-gray-300 max-w-2xl mx-auto">
-            I specialize in modern web technologies and continuously expand my
-            skill set to deliver exceptional digital experiences.
-          </p>
+          <div className="w-20 h-1 bg-gradient-to-r from-[#a9170a] to-[#831010] mx-auto mb-6"></div>
         </motion.div>
         <div className="mb-10">
           <div className="flex flex-wrap justify-center gap-4 mb-10">
-            {tabs.map(tab => <button key={tab.id} onClick={() => setActiveTab(tab.id as SkillCategory)} className={`px-6 py-2 rounded-full text-white font-medium transition-all ${activeTab === tab.id ? 'bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg' : 'bg-slate-700 hover:bg-slate-600'}`}>
+            {tabs.map(tab => <button key={tab.id} onClick={() => setActiveTab(tab.id as SkillCategory)} className={`px-6 py-2 rounded-full text-[white] font-medium transition-all ${activeTab === tab.id ? 'bg-gradient-to-r from-[#a9170a] to-[#831010] shadow-lg' : 'bg-[#B8B1A8] hover:bg-[#bca78d]'}`}>
                             {tab.label}
                           </button>)}
           </div>
           <motion.div ref={ref} variants={containerVariants} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="grid gap-6">
             {skillCategories[activeTab].map((skill, index) => <motion.div key={index} variants={itemVariants} className="skill-item">
                 <div className="flex justify-between mb-2">
-                  <span className="font-medium text-white">{skill.name}</span>
-                  <span className="text-gray-400">{skill.level}%</span>
+                  <span className="font-medium text-[#a9170a]">{skill.name}</span>
+                  <span className="text-[#a9170a]">{skill.level}%</span>
                 </div>
-                <div className="h-3 bg-slate-700 rounded-full overflow-hidden">
-                  <motion.div custom={skill.level} variants={barVariants} className={`h-full rounded-full ${activeTab === 'frontend' ? 'bg-gradient-to-r from-purple-500 to-blue-500' : activeTab === 'backend' ? 'bg-gradient-to-r from-blue-500 to-cyan-500' : 'bg-gradient-to-r from-purple-500 to-pink-500'}`} />
+                <div className="h-3 bg-[#B8B1A8] rounded-full overflow-hidden">
+                  <motion.div custom={skill.level} variants={barVariants} className={`h-full rounded-full ${activeTab === 'frontend' ? 'bg-gradient-to-r from-[#a9170a] to-[#831010]' : activeTab === 'backend' ? 'bg-gradient-to-r from-[#a9170a] to-[#831010]' : 'bg-gradient-to-r from-[#a9170a] to-[#831010]'}`} />
                 </div>
               </motion.div>)}
           </motion.div>
@@ -188,8 +184,8 @@ const Skills = () => {
                 }} />
                   <defs>
                     <linearGradient id="frontendGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#a855f7" />
-                      <stop offset="100%" stopColor="#3b82f6" />
+                      <stop offset="0%" stopColor="#fffde8" />
+                      <stop offset="100%" stopColor="#f7f0a3" />
                     </linearGradient>
                   </defs>
                 </svg>
@@ -216,8 +212,8 @@ const Skills = () => {
                 }} />
                   <defs>
                     <linearGradient id="backendGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#3b82f6" />
-                      <stop offset="100%" stopColor="#06b6d4" />
+                      <stop offset="0%" stopColor="#fffde8" />
+                      <stop offset="100%" stopColor="#f7f0a3" />
                     </linearGradient>
                   </defs>
                 </svg>
@@ -244,8 +240,8 @@ const Skills = () => {
                 }} />
                   <defs>
                     <linearGradient id="toolsGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#a855f7" />
-                      <stop offset="100%" stopColor="#ec4899" />
+                      <stop offset="0%" stopColor="#fffde8" />
+                      <stop offset="100%" stopColor="#f7f0a3" />
                     </linearGradient>
                   </defs>
                 </svg>

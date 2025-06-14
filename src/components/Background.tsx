@@ -9,7 +9,7 @@ export default function Background() {
       className="fixed inset-0 -z-50 bg-gradient-to-tr from-[#a9170a] via-[#831010] to-[#000000]"
       style={{
         backgroundSize: "400% 400%",
-        animation: "gradientMoveX 10s ease-in-out infinite, gradientMoveY 7s ease-in-out infinite",
+        animation: "gradientMoveX 8s ease-in-out infinite, gradientMoveY 7s ease-in-out infinite",
       }}
     >
       <style>

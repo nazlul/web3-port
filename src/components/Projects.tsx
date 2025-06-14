@@ -1,33 +1,33 @@
 import { GithubIcon, ExternalLinkIcon } from "lucide-react";
 import { CardBody, CardContainer, CardItem } from "../components/ui/3d-card";
-import { LinkPreview } from "../components/ui/link-preview"; 
+import { LinkPreview } from "../components/ui/link-preview";
 
 const projects = [
   {
     title: "Lifeliner by BMH",
     description: "A life saving initiative by Baby Memorial Hospital.",
-    image: "/lifeliner.png",
+    image: "/lifeliner.mp4",
     demoLink: "https://lifeliner.org/",
     codeLink: "https://github.com/nazlul/lifeliner",
   },
   {
     title: "Base Loans App",
     description: "A yield dapp built on base mainnet.",
-    image: "/loans.png",
+    image: "/loans.mp4",
     demoLink: "https://baseyield.vercel.app/",
     codeLink: "https://github.com/nazlul/base-loans-app",
   },
   {
     title: "Decentralised Exchange",
     description: "A DEX to swap tokens on Ethereum Mainnet.",
-    image: "/dex.png",
+    image: "/dex.mp4",
     demoLink: "https://drip-dex-one.vercel.app/",
     codeLink: "https://github.com/nazlul/DripDEX",
   },
   {
     title: "Interactive Crypto Trasfer App",
     description: "An app to send crypto to friends along with a gif and message.",
-    image: "/transfer.png",
+    image: "/transfer.mp4",
     demoLink: "https://arachnida-livid.vercel.app/",
     codeLink: "https://github.com/nazlul/CryptoTransferApp",
   },
@@ -48,13 +48,28 @@ export default function Projects() {
                 {project.description}
               </CardItem>
               <CardItem translateZ="70" className="w-full mt-4">
-                <img
-                  src={project.image}
-                  height="1000"
-                  width="1000"
-                  className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                  alt="Project screenshot"
-                />
+                {project.image.endsWith(".mp4") ? (
+                  <video
+                    src={project.image}
+                    loop
+                    muted
+                    playsInline
+                    className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                    onMouseEnter={(e) => e.currentTarget.play()}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.pause();
+                      e.currentTarget.currentTime = 0; 
+                    }}
+                  />
+                ) : (
+                  <img
+                    src={project.image}
+                    height="1000"
+                    width="1000"
+                    className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                    alt="Project screenshot"
+                  />
+                )}
               </CardItem>
               <div className="flex justify-between items-center mt-6">
                 <CardItem translateZ={71} className="text-xs font-normal">
