@@ -14,7 +14,6 @@
     "@radix-ui/react-hover-card": "^1.1.14",
     "@react-three/fiber": "^8.13.7",
     "@tabler/icons-react": "^3.34.0",
-    "@types/three": "^0.177.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.5.4",
     "lucide-react": "^0.441.0",
@@ -24,12 +23,14 @@
     "react-dom": "^18.3.1",
     "react-intersection-observer": "^9.13.1",
     "tailwind-merge": "^3.3.1",
-    "three": "^0.177.0"
+    "three": "^0.177.0",
+    "three-stdlib": "^2.36.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.18",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
+    "@types/three": "^0.177.0",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
     "@vitejs/plugin-react": "^4.2.1",

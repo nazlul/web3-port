@@ -16,28 +16,25 @@ const Skills = () => {
 
   const skillCategories: Record<SkillCategory, { name: string; level: number }[]> = {
     frontend: [
-      { name: 'React', level: 90 },
+      { name: 'NextJS', level: 90 },
+      { name: 'ReactJS', level: 85 },
       { name: 'JavaScript', level: 85 },
-      { name: 'TypeScript', level: 80 },
-      { name: 'HTML/CSS', level: 95 },
-      { name: 'Tailwind CSS', level: 88 },
-      { name: 'Framer Motion', level: 75 }
+      { name: 'TypeScript', level: 85 },
+      { name: 'HTML/CSS', level: 85 },
+      { name: 'Tailwind CSS', level: 90 }
     ],
     backend: [
-      { name: 'Node.js', level: 82 },
-      { name: 'Express', level: 80 },
-      { name: 'MongoDB', level: 75 },
-      { name: 'GraphQL', level: 70 },
-      { name: 'REST APIs', level: 85 },
-      { name: 'Firebase', level: 78 }
+      { name: 'Node.js', level: 80 },
+      { name: 'Python', level: 85 },
+      { name: 'Express', level: 60 },
+      { name: 'PostgreSQL', level: 65 },
+      { name: 'REST APIs', level: 65 }
     ],
     tools: [
       { name: 'Git', level: 88 },
-      { name: 'Webpack', level: 75 },
-      { name: 'Docker', level: 65 },
-      { name: 'Figma', level: 80 },
-      { name: 'VS Code', level: 92 },
-      { name: 'Jest', level: 72 }
+      { name: 'Hardhat', level: 75 },
+      { name: 'Figma', level: 65 },
+      { name: 'VS Code', level: 95 }
     ]
   };
 
@@ -171,7 +168,7 @@ const Skills = () => {
                       </defs>
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-[#fffde8]">
-                      85%
+                      83%
                     </div>
                   </div>
                   <h4 className="text-center text-lg font-medium mb-2 text-[#fffde8]">Frontend</h4>
@@ -203,7 +200,7 @@ const Skills = () => {
                       </defs>
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center text-2xl text-[#fffde8] font-bold">
-                      78%
+                      76%
                     </div>
                   </div>
                   <h4 className="text-center text-lg font-medium mb-2 text-[#fffde8]">Backend</h4>
@@ -235,11 +232,11 @@ const Skills = () => {
                       </defs>
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center text-2xl text-[#fffde8] font-bold">
-                      80%
+                      78%
                     </div>
                   </div>
                   <h4 className="text-center text-lg font-medium mb-2 text-[#fffde8]">Tools</h4>
-                  <p className="text-center text-[#fffde8] text-sm">DevOps & Design Tools</p>
+                  <p className="text-center text-[#fffde8] text-sm">Dev and Design Tools</p>
                 </div>
               </div>
             </motion.div>

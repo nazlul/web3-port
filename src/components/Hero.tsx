@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import Scene from './Scene';
 const Hero = () => {
   const typingRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -47,6 +48,7 @@ const Hero = () => {
           <span className="text-[#fffde8]">
             Web Developer
           </span>
+          {/* <Scene /> */}
         </motion.h1>
         <motion.div initial={{
         opacity: 0
