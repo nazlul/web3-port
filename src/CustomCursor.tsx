@@ -37,8 +37,13 @@ function findCursorColor(el: HTMLElement | null): string | null {
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [color, setColor] = useState("#fffde8");
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
+    const touch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    setIsTouch(touch);
+    if (touch) return; 
+
     const move = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
 
@@ -57,12 +62,15 @@ export default function CustomCursor() {
       if (brightness >= 250) {
         setColor("#a9170a");
       } else {
-        setColor("#fffde8"); 
+        setColor("#fffde8");
       }
     };
+
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
   }, []);
+
+  if (isTouch) return null;
 
   return (
     <>

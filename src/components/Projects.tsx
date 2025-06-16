@@ -57,7 +57,7 @@ export default function Projects() {
   return (
     <section id="projects" className="py-12 px-4 sm:px-10 md:px-20 lg:px-40">
       <h2 className="text-3xl font-bold text-center mb-10 text-[#fffde8]">Projects</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         {projects.map((project, idx) => (
           <CardContainer key={idx} className="inter-var">
             <CardBody className="relative group/card dark:hover:shadow-2xl dark:hover:shadow-white/[0.1] bg-[#fffde8] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">

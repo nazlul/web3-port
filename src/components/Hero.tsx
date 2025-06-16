@@ -48,8 +48,8 @@ const Hero = () => {
           <span className="text-[#fffde8]">
             Web Developer
           </span>
-          {/* <Scene /> */}
-        </motion.h1>
+        </motion.h1>     
+          <Scene />
         <motion.div initial={{
         opacity: 0
       }} animate={{

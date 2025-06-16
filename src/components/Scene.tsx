@@ -2,8 +2,7 @@
 
 import * as THREE from 'three'
 import { useEffect, useRef } from 'react'
-import { GLTFLoader } from 'three-stdlib';
-import { DRACOLoader } from 'three-stdlib';
+import { GLTFLoader } from 'three-stdlib'
 
 export default function Scene() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -14,7 +13,6 @@ export default function Scene() {
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000)
     camera.position.set(0, 20, 120)
-    camera.lookAt(new THREE.Vector3(-50, 10, 0))
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
     renderer.setSize(window.innerWidth, window.innerHeight)
@@ -26,90 +24,84 @@ export default function Scene() {
     scene.add(ambientLight, directionalLight)
 
     const loader = new GLTFLoader()
-    const dracoLoader = new DRACOLoader()
-    dracoLoader.setDecoderPath('/draco/')
-    loader.setDRACOLoader(dracoLoader)
 
-    let model: THREE.Group
-    let laptopTopPivot: THREE.Object3D | null = null
+    let lidPart1: THREE.Object3D | null = null
+    let lidPart2: THREE.Object3D | null = null
+    let model: THREE.Group | null = null
 
-    loader.load('/laptop.glb', (gltf: { scene: THREE.Group<THREE.Object3DEventMap> }) => {
+    loader.load('/laptop.glb', (gltf) => {
       model = gltf.scene
 
-      // Center the model
       const box = new THREE.Box3().setFromObject(model)
       const center = box.getCenter(new THREE.Vector3())
       model.position.sub(center)
 
-      // Scale
       const size = box.getSize(new THREE.Vector3())
       const scale = 100 / Math.max(size.x, size.y, size.z)
       model.scale.setScalar(scale)
 
       model.rotation.y = Math.PI / 3
 
-      // Load screen texture
-      const textureLoader = new THREE.TextureLoader()
-      const screenTexture = textureLoader.load('/screen.png')
+      const screenTexture = new THREE.TextureLoader().load('/screen.png')
       screenTexture.wrapS = screenTexture.wrapT = THREE.RepeatWrapping
       screenTexture.flipY = false
       screenTexture.repeat.set(-1.95, 3)
       screenTexture.offset.set(-0.11, 0.26)
 
       model.traverse((child) => {
-        if (child instanceof THREE.Mesh && child.name === 'LaptopLid_LaptopScreen_0') {
-          child.material = new THREE.MeshStandardMaterial({ map: screenTexture, side: THREE.DoubleSide })
+        if (child instanceof THREE.Mesh) {
+          if (child.name === 'LaptopLid_LaptopScreen_0') {
+            child.material = new THREE.MeshStandardMaterial({
+              map: screenTexture,
+              side: THREE.DoubleSide,
+            })
+            lidPart2 = child
+          }
+          if (child.name === 'LaptopLid_LaptopLid_0') {
+            lidPart1 = child
+          }
         }
       })
-
-      const lid = model.getObjectByName('LaptopLid')
-      if (lid) {
-        const pivot = new THREE.Object3D()
-        pivot.position.set(0, 14.5, 0)
-        lid.position.sub(pivot.position)
-        pivot.add(lid)
-        model.add(pivot)
-
-        // ✅ Semi-closed lid (like a real laptop at rest)
-        pivot.rotation.x = Math.PI / 2.2 // ~80 degrees open
-
-        laptopTopPivot = pivot
-      }
 
       scene.add(model)
     })
 
     const initialZ = 120
-    const targetZoomZ = 40
-    const scrollThreshold = 300
-    const initialLidAngle = Math.PI / 2.2 // ~80°
-    const finalLidAngle = 0 // fully open
+    const targetZ = 40
+    const scrollMax = 300
+    const startAngle = -Math.PI / 4 
+    const endAngle = 0
 
-    const animate = () => {
+    function animate() {
       requestAnimationFrame(animate)
 
-      const scrollY = Math.min(window.scrollY, scrollThreshold)
-      const t = scrollY / scrollThreshold
+      const scrollY = Math.min(window.scrollY, scrollMax)
+      const t = scrollY / scrollMax
 
-      camera.position.z = initialZ - (initialZ - targetZoomZ) * t
+      camera.position.z = initialZ - (initialZ - targetZ) * t
 
-      if (laptopTopPivot) {
-        laptopTopPivot.rotation.x = initialLidAngle * (1 - t) + finalLidAngle * t
+      if (model) {
+        camera.lookAt(new THREE.Vector3(0, 10, 0))
       }
+
+      const lidRotation = startAngle * (1 - t) + endAngle * t
+
+      if (lidPart1) lidPart1.rotation.x = lidRotation
+      if (lidPart2) lidPart2.rotation.x = lidRotation
 
       renderer.render(scene, camera)
     }
     animate()
 
-    const handleResize = () => {
+    const onResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight
       camera.updateProjectionMatrix()
       renderer.setSize(window.innerWidth, window.innerHeight)
     }
-    window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', onResize)
 
     return () => {
-      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('resize', onResize)
       if (containerRef.current) containerRef.current.removeChild(renderer.domElement)
     }
   }, [])
@@ -122,8 +114,8 @@ export default function Scene() {
         top: 0,
         width: '100vw',
         height: '100vh',
-        zIndex: 0,
         overflow: 'hidden',
+        zIndex: -1, 
       }}
     />
   )
