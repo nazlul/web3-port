@@ -6,7 +6,7 @@ export default function Background() {
   return (
     <motion.div
       aria-hidden="true"
-      className="fixed inset-0 -z-50 bg-gradient-to-tr from-[#a9170a] via-[#831010] to-[#000000]"
+      className="fixed inset-0 -z-50 bg-gradient-to-tr from-[#a9170a] via-[#831010] to-[#2c0000]"
       style={{
         backgroundSize: "400% 400%",
         animation: "gradientMoveX 8s ease-in-out infinite, gradientMoveY 7s ease-in-out infinite",

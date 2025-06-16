@@ -68,8 +68,8 @@ const Hero = () => {
         duration: 0.8,
         delay: 1.5
       }} className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4">
-          <a href="#projects" className="px-8 py-3 bg-[#fffde8] hover:bg-[#fffde8]/80 rounded-full text-[#831010] font-medium transition-transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20">
-            View My Work
+          <a href="/Naz_Resume.pdf" target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-[#fffde8] hover:bg-[#fffde8]/80 rounded-full text-[#831010] font-medium transition-transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20">
+            Resume
           </a>
           <a href="#contact" className="px-8 py-3 border border-[#fffde8] rounded-full text-[#fffde8] font-medium transition-all hover:bg-[#24243e]/10">
             Contact Me

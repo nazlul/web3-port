@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "../../lib/utils";
-
 import React, {
   createContext,
   useState,
@@ -25,9 +24,33 @@ export const CardContainer = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMouseEntered, setIsMouseEntered] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    const checkScreen = () => setIsSmallScreen(mq.matches);
+    checkScreen();
+    mq.addEventListener("change", checkScreen);
+    return () => mq.removeEventListener("change", checkScreen);
+  }, []);
+
+  useEffect(() => {
+    if (!isSmallScreen || !containerRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsMouseEntered(entry.isIntersecting);
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(containerRef.current);
+
+    return () => observer.disconnect();
+  }, [isSmallScreen]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || isSmallScreen) return;
     const { left, top, width, height } =
       containerRef.current.getBoundingClientRect();
     const x = (e.clientX - left - width / 2) / 25;
@@ -36,15 +59,15 @@ export const CardContainer = ({
   };
 
   const handleMouseEnter = () => {
-    setIsMouseEntered(true);
-    if (!containerRef.current) return;
+    if (!isSmallScreen) setIsMouseEntered(true);
   };
 
   const handleMouseLeave = () => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || isSmallScreen) return;
     setIsMouseEntered(false);
     containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
   };
+
   return (
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
@@ -52,9 +75,7 @@ export const CardContainer = ({
           "py-20 flex items-center justify-center",
           containerClassName
         )}
-        style={{
-          perspective: "1000px",
-        }}
+        style={{ perspective: "1000px" }}
       >
         <div
           ref={containerRef}
@@ -65,9 +86,7 @@ export const CardContainer = ({
             "flex items-center justify-center relative transition-all duration-200 ease-linear",
             className
           )}
-          style={{
-            transformStyle: "preserve-3d",
-          }}
+          style={{ transformStyle: "preserve-3d" }}
         >
           {children}
         </div>
@@ -86,7 +105,7 @@ export const CardBody = ({
   return (
     <div
       className={cn(
-        "h-96 w-96 [transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]",
+        "h-96 w-96 [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d]",
         className
       )}
     >
@@ -105,9 +124,9 @@ type CardItemProps<T extends React.ElementType> = {
   rotateX?: number | string;
   rotateY?: number | string;
   rotateZ?: number | string;
-} & Omit<React.ComponentPropsWithoutRef<T>, 'as' | 'children' | 'className'>;
+} & Omit<React.ComponentPropsWithoutRef<T>, "as" | "children" | "className">;
 
-export const CardItem = <T extends React.ElementType = 'div'>({
+export const CardItem = <T extends React.ElementType = "div">({
   as,
   children,
   className,
@@ -124,17 +143,15 @@ export const CardItem = <T extends React.ElementType = 'div'>({
   const [isMouseEntered] = useMouseEnter();
 
   useEffect(() => {
-    handleAnimations();
-  }, [isMouseEntered]);
-
-  const handleAnimations = () => {
     if (!ref.current) return;
+
     if (isMouseEntered) {
       ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
     } else {
-      ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
+      ref.current.style.transform =
+        "translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)";
     }
-  };
+  }, [isMouseEntered]);
 
   return (
     <Tag

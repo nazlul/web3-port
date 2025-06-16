@@ -1,3 +1,30 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+:root {
+  --cursor-bubble-color: #a9170a; 
+  --background-color: #fffde8; 
+}
+
+[data-theme="red"] {
+  --cursor-bubble-color: #fffde8; 
+  --background-color: #a9170a;
+}
+
+* {
+  cursor: none !important;
+}
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+

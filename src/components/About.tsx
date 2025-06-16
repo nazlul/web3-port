@@ -11,7 +11,8 @@ import MagneticCard from '../components/ui/MagneticCard';
 const About = () => {
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0.1
+    threshold: 0.1,
+    rootMargin: '-10% 0px -10% 0px'
   });
 
   const containerVariants = {
@@ -79,22 +80,22 @@ const About = () => {
             {[
               {
                 icon: <UserIcon className="text-[#fffde8]" size={24} />,
-                title: 'Personal Touch',
+                title: <span className="text-[#fffde8]">Personal Touch</span>,
                 text: 'I approach every project with care and personality — no copy-paste templates, just thoughtful design and development.'
               },
               {
                 icon: <BriefcaseIcon className="text-[#fffde8]" size={24} />,
-                title: 'Real-World Projects',
+                title: <span className="text-[#fffde8]">Real-World Projects</span>,
                 text: "I'm still early in my career, but I focus on writing clean, maintainable code and building projects that solve real problems."
               },
               {
                 icon: <GraduationCapIcon className="text-[#fffde8]" size={24} />,
-                title: 'Always Learning',
+                title: <span className="text-[#fffde8]">Always Learning</span>,
                 text: "I'm constantly picking up new tools, keeping up with the latest frontend tech, and pushing myself to grow as a developer."
               },
               {
                 icon: <HeartIcon className="text-[#fffde8]" size={24} />,
-                title: 'Passionate Creator',
+                title: <span className="text-[#fffde8]">Passionate Creator</span>,
                 text: 'I love building web experiences that are not only functional, but also feel smooth, modern, and enjoyable to use.'
               }
             ].map((item, idx) => (

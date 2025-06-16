@@ -1,8 +1,18 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { GithubIcon, ExternalLinkIcon } from "lucide-react";
 import { CardBody, CardContainer, CardItem } from "../components/ui/3d-card";
 import { LinkPreview } from "../components/ui/link-preview";
 
 const projects = [
+  {
+    title: "Meta Ads Analytics",
+    description: "A Dashboard to analyze Meta Ads performance. With functional SignIn, SignUp and Email verification.",
+    image: "/dash.mp4",
+    demoLink: "https://adsdash.vercel.app/",
+    codeLink: "https://github.com/nazlul/analytics-dash",
+  },
   {
     title: "Lifeliner by BMH",
     description: "A life saving initiative by Baby Memorial Hospital.",
@@ -34,6 +44,16 @@ const projects = [
 ];
 
 export default function Projects() {
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1024px)");
+    const handleResize = () => setIsSmallScreen(mediaQuery.matches);
+    handleResize();
+    mediaQuery.addEventListener("change", handleResize);
+    return () => mediaQuery.removeEventListener("change", handleResize);
+  }, []);
+
   return (
     <section id="projects" className="py-12 px-4 sm:px-10 md:px-20 lg:px-40">
       <h2 className="text-3xl font-bold text-center mb-10 text-[#fffde8]">Projects</h2>
@@ -41,24 +61,29 @@ export default function Projects() {
         {projects.map((project, idx) => (
           <CardContainer key={idx} className="inter-var">
             <CardBody className="relative group/card dark:hover:shadow-2xl dark:hover:shadow-white/[0.1] bg-[#fffde8] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
-              <CardItem translateZ="50" className="text-xl font-bold text-[#a9170a]">
+              <CardItem translateZ="70" className="text-xl font-bold text-[#a9170a]">
                 {project.title}
               </CardItem>
-              <CardItem translateZ="60" className="text-sm max-w-sm mt-2 text-[#a9170a]">
+              <CardItem translateZ="65" className="text-sm max-w-sm mt-2 text-[#a9170a]">
                 {project.description}
               </CardItem>
-              <CardItem translateZ="70" className="w-full mt-4">
+              <CardItem translateZ="80" className="w-full mt-4">
                 {project.image.endsWith(".mp4") ? (
                   <video
                     src={project.image}
                     loop
                     muted
                     playsInline
+                    autoPlay={isSmallScreen}
                     className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                    onMouseEnter={(e) => e.currentTarget.play()}
+                    onMouseEnter={(e) => {
+                      if (!isSmallScreen) e.currentTarget.play();
+                    }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.pause();
-                      e.currentTarget.currentTime = 0; 
+                      if (!isSmallScreen) {
+                        e.currentTarget.pause();
+                        e.currentTarget.currentTime = 0;
+                      }
                     }}
                   />
                 ) : (
@@ -72,7 +97,7 @@ export default function Projects() {
                 )}
               </CardItem>
               <div className="flex justify-between items-center mt-6">
-                <CardItem translateZ={71} className="text-xs font-normal">
+                <CardItem translateZ={81} className="text-xs font-normal">
                   <LinkPreview url={project.demoLink}>
                     <a
                       href={project.demoLink}
