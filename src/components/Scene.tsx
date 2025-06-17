@@ -69,7 +69,7 @@ export default function Scene() {
     const initialZ = 120
     const targetZ = 40
     const scrollMax = 300
-    const startAngle = -Math.PI / 2.5 
+    const startAngle = -Math.PI / 3.5 
     const endAngle = 0
 
     function animate() {
