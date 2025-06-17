@@ -12,7 +12,7 @@ const About = () => {
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
-    rootMargin: '-10% 0px -10% 0px'
+    rootMargin: '-2% 0px -2% 0px'
   });
 
   const containerVariants = {
@@ -24,7 +24,7 @@ const About = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
@@ -51,7 +51,7 @@ const About = () => {
 
         <div className="grid gap-12 md:grid-cols-2">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8 }}
             ref={ref}

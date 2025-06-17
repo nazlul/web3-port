@@ -136,7 +136,7 @@ const Skills = () => {
 
           <MagneticCard>
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               className="rounded-xl"
