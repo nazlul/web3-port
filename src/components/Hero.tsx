@@ -19,7 +19,7 @@ const Hero = () => {
     }, 100);
     return () => clearInterval(typingInterval);
   }, []);
-  return <section id="home" className="min-h-screen flex items-center justify-center px-4 relative">
+  return <section id="home" className="min-h-screen flex items-center justify-center relative">
       <div className="max-w-5xl w-full text-center md:text-left">
         <motion.div initial={{
         opacity: 0,
