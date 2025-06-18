@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
@@ -7,28 +9,30 @@ import {
   HeartIcon
 } from 'lucide-react';
 import MagneticCard from '../components/ui/MagneticCard';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const About = () => {
+  const isMobile = useIsMobile();
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0.1,
-    rootMargin: '-2% 0px -2% 0px'
+    threshold: isMobile ? 0.05 : 0.1,
+    rootMargin: isMobile ? '-5% 0px -5% 0px' : '-2% 0px -2% 0px'
   });
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.3 }
+      transition: { staggerChildren: 0.2 }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
+    hidden: { opacity: 0, y: isMobile ? 4 : 10 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 }
+      transition: { duration: isMobile ? 0.3 : 0.6 }
     }
   };
 
@@ -36,9 +40,9 @@ const About = () => {
     <section id="about" className="relative z-10 bg-[#fffde8] py-20 px-4">
       <div className="mx-auto max-w-5xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: isMobile ? 12 : 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: isMobile ? 0.5 : 0.8 }}
           className="mb-16 text-center"
         >
           <h2 className="mb-2 text-3xl font-bold md:text-4xl">
@@ -49,11 +53,11 @@ const About = () => {
           <div className="mx-auto h-1 w-20 bg-[#fffde8]" />
         </motion.div>
 
-        <div className="grid gap-12 md:grid-cols-2">
+        <div className="grid gap-12 md:grid-cols-2 min-h-[40vh]">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : -10 }}
+            animate={inView || isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+            transition={{ duration: isMobile ? 0.5 : 0.8 }}
             ref={ref}
             className="relative"
           >
@@ -74,7 +78,7 @@ const About = () => {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={inView ? 'visible' : 'hidden'}
+            animate={inView || isMobile ? 'visible' : 'hidden'}
             className="grid grid-cols-1 gap-6"
           >
             {[
