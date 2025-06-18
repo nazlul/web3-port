@@ -18,7 +18,7 @@ export default function Scene() {
     renderer.setSize(window.innerWidth, window.innerHeight)
     containerRef.current.appendChild(renderer.domElement)
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2)
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
     directionalLight.position.set(10, 20, 10)
     scene.add(ambientLight, directionalLight)
@@ -45,11 +45,12 @@ export default function Scene() {
       const screenTexture = new THREE.TextureLoader().load('/screen.png')
       screenTexture.wrapS = screenTexture.wrapT = THREE.RepeatWrapping
       screenTexture.flipY = false
-      screenTexture.repeat.set(-1.95, 3)
-      screenTexture.offset.set(-0.11, 0.26)
+      screenTexture.repeat.set(-1.8, 3)
+      screenTexture.offset.set(-0.32, 0.29)
 
       model.traverse((child) => {
         if (child instanceof THREE.Mesh) {
+          console.log('Mesh name:', child.name)
           if (child.name === 'LaptopLid_LaptopScreen_0') {
             child.material = new THREE.MeshStandardMaterial({
               map: screenTexture,
@@ -60,6 +61,10 @@ export default function Scene() {
           if (child.name === 'LaptopLid_LaptopLid_0') {
             lidPart1 = child
           }
+           if (child.name === 'Cube002_MatTransRed_0') {
+            const material = child.material as THREE.MeshStandardMaterial
+            material.color.set('green')
+          }
         }
       })
 
@@ -68,8 +73,8 @@ export default function Scene() {
 
     const initialZ = 120
     const targetZ = 40
-    const scrollMax = 300
-    const startAngle = -Math.PI / 3.5 
+    const scrollMax = 100
+    const startAngle = -Math.PI / 1.8
     const endAngle = 0
 
     function animate() {
