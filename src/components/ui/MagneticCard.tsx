@@ -22,7 +22,7 @@ const MagneticCard = ({ children }: { children: React.ReactNode }) => {
       style={{ "--cursor-bubble-color": "#fffde8" } as React.CSSProperties}
       className="relative group overflow-hidden rounded-xl bg-[#a9170a] p-6 transition-all duration-300 hover:-translate-y-1 shadow-lg"
     >
-      <div className="pointer-events-none absolute inset-0 z-0 bg-transparent before:absolute before:inset-0 before:rounded-xl before:content-[''] before:bg-[radial-gradient(500px_circle_at_var(--mouse-x)_var(--mouse-y),rgba(128,128,128,0.3),transparent_40%)] transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-transparent before:absolute before:inset-0 before:rounded-xl before:content-[''] before:bg-[radial-gradient(300px_circle_at_var(--mouse-x)_var(--mouse-y),rgba(100,0,0,0.8),transparent_60%)] transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
 
       <div className="relative z-10">{children}</div>
     </div>
