@@ -8,7 +8,7 @@ import { LinkPreview } from "../components/ui/link-preview";
 const projects = [
   {
     title: "Meta Ads Analytics",
-    description: "A Dashboard to analyze Meta Ads performance. With functional SignIn, SignUp and Email verification.",
+    description: "Dashboard for analyzing Meta Ads performance using data from the Meta Marketing API, with integrated Auth (SignIn, SignUp, Email Verification).",
     image: "/dash.mp4",
     demoLink: "https://adsdash.vercel.app/",
     codeLink: "https://github.com/nazlul/analytics-dash",
