@@ -36,9 +36,17 @@ const Hero = () => {
         >
           <span className="text-lg md:text-xl text-[#fffde8]">Hello, I'm</span>
         </motion.div>
-        <span className="text-4xl md:text-6xl lg:text-7xl mb-4 font-bold text-[#fffde8]">
+       <div className="flex items-center justify-center md:justify-start mb-4">
+        <img
+          src="/pfp.png"
+          alt="Profile Picture"
+          className="w-14 h-14 md:w-16 md:h-16 rounded-full border-2 border-[#fffde8] mr-3 object-cover"
+        />
+        <span className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#fffde8]">
           Degen Naz
         </span>
+      </div>
+
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
