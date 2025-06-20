@@ -6,7 +6,7 @@ const Hero = () => {
   const typingRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const text = 'I create amazing web experiences.';
+    const text = 'Clean code. Smooth UX. Good vibes only';
     const typingElement = typingRef.current;
     if (!typingElement) return;
     let i = 0;
@@ -37,7 +37,7 @@ const Hero = () => {
           <span className="text-lg md:text-xl text-[#fffde8]">Hello, I'm</span>
         </motion.div>
         <span className="text-4xl md:text-6xl lg:text-7xl mb-4 font-bold text-[#fffde8]">
-          Nazlul Rizan
+          Degen Naz
         </span>
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -100,7 +100,6 @@ const Hero = () => {
         </a>
       </motion.div>
 
-      {/* Scoped CSS for glowing effect */}
       <style>{`
         .btn-glow:hover {
           box-shadow:

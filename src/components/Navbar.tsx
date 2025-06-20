@@ -79,7 +79,7 @@ const Navbar = () => {
         }} transition={{
           duration: 0.5
         }} className={`text-2xl font-bold   ${isScrolled ? 'text-[#a9170a]' : 'text-[#fffde8]'}`}>
-            Portfolio
+            Onchain Work 
           </motion.div>
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link, i) => <motion.a key={link.name} href={link.href} custom={i} variants={linkVariants} initial="hidden" animate="visible" className={`focus:outline-none hover:text-[#a90a0a] ${isScrolled ? 'text-[#6a1414] hover:text-[#a90a0a]' : 'text-[#fffde8] hover:text-[#faf4b6]'}`}>

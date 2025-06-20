@@ -3,10 +3,10 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
-  UserIcon,
-  BriefcaseIcon,
-  GraduationCapIcon,
-  HeartIcon
+  ShieldCheckIcon,
+  GlobeIcon,
+  Code2Icon,
+  HeartIcon,
 } from 'lucide-react';
 import MagneticCard from '../components/ui/MagneticCard';
 import { useIsMobile } from '../hooks/useIsMobile';
@@ -16,15 +16,15 @@ const About = () => {
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: isMobile ? 0.05 : 0.1,
-    rootMargin: isMobile ? '-5% 0px -5% 0px' : '-2% 0px -2% 0px'
+    rootMargin: isMobile ? '-5% 0px -5% 0px' : '-2% 0px -2% 0px',
   });
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2 }
-    }
+      transition: { staggerChildren: 0.2 },
+    },
   };
 
   const itemVariants = {
@@ -32,8 +32,8 @@ const About = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: isMobile ? 0.3 : 0.6 }
-    }
+      transition: { duration: isMobile ? 0.3 : 0.6 },
+    },
   };
 
   return (
@@ -66,10 +66,10 @@ const About = () => {
               <MagneticCard>
                 <h3 className="mb-4 text-2xl font-bold text-[#fffde8]">Who I Am</h3>
                 <p className="mb-4 text-[#fffde8]">
-                  I'm a <span className='text-black font-bold'>Web Developer</span> who loves crafting clean, responsive UIs that feel smooth and look great. I focus on the little interactions that make a site feel alive, and I enjoy turning ideas into something real with code and design.
+                  I’m a <span className="text-black font-bold">Web3 dev</span> building smooth, secure dApps. From DeFi dashboards to NFT mints, I bring blockchain apps to life.
                 </p>
                 <p className="text-[#fffde8]">
-                  Lately, I've been diving into the world of blockchain and building frontend experiences for web3 apps. When I'm not coding, I'm exploring new design trends, messing around with creative side projects. Always learning, always building.
+                  Focused on user-first design, React + TypeScript, and wallet integrations. I work with Next.js, wagmi, viem, and ethers — always exploring the decentralized future.
                 </p>
               </MagneticCard>
             </div>
@@ -83,24 +83,24 @@ const About = () => {
           >
             {[
               {
-                icon: <UserIcon className="text-[#fffde8]" size={24} />,
-                title: <span className="text-[#fffde8]">Personal Touch</span>,
-                text: 'I approach every project with care and personality — no copy-paste templates, just thoughtful design and development.'
+                icon: <ShieldCheckIcon className="text-[#fffde8]" size={24} />,
+                title: <span className="text-[#fffde8]">Secure by Design</span>,
+                text: 'Keeping wallets and data safe with best practices.'
               },
               {
-                icon: <BriefcaseIcon className="text-[#fffde8]" size={24} />,
-                title: <span className="text-[#fffde8]">Real-World Projects</span>,
-                text: "I'm still early in my career, but I focus on writing clean, maintainable code and building projects that solve real problems."
+                icon: <GlobeIcon className="text-[#fffde8]" size={24} />,
+                title: <span className="text-[#fffde8]">Decentralized Focus</span>,
+                text: 'Making blockchain apps easy and enjoyable.'
               },
               {
-                icon: <GraduationCapIcon className="text-[#fffde8]" size={24} />,
-                title: <span className="text-[#fffde8]">Always Learning</span>,
-                text: "I'm constantly picking up new tools, keeping up with the latest frontend tech, and pushing myself to grow as a developer."
+                icon: <Code2Icon className="text-[#fffde8]" size={24} />,
+                title: <span className="text-[#fffde8]">Modern Stack</span>,
+                text: 'Next.js, Tailwind, TypeScript, wagmi & friends.'
               },
               {
                 icon: <HeartIcon className="text-[#fffde8]" size={24} />,
-                title: <span className="text-[#fffde8]">Passionate Creator</span>,
-                text: 'I love building web experiences that are not only functional, but also feel smooth, modern, and enjoyable to use.'
+                title: <span className="text-[#fffde8]">Web3 Native</span>,
+                text: 'Building and believing in the decentralized future.'
               }
             ].map((item, idx) => (
               <motion.div key={idx} variants={itemVariants}>

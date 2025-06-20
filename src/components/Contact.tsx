@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { MailIcon, PhoneIcon, MapPinIcon, SendIcon } from 'lucide-react';
+import { MailIcon, MapPinIcon, SendIcon } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -87,9 +87,11 @@ const Contact = () => {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-2 text-[#fffde8]">Get In Touch</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-[#fffde8] to-[#B8B1A8] mx-auto mb-6"></div>
-          <p className="text-[#fffde8] max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? Feel free to reach
-            out and I'll get back to you as soon as possible.
+          <p className="mb-4 text-[#fffde8]">
+            I build cool stuff — from DeFi dapps and meme projects to whatever's fun and fresh.
+          </p>
+          <p className="text-[#fffde8]">
+            Got a project in mind or wanna collab? Hit me up and I'll get back to you ASAP.
           </p>
         </motion.div>
 
@@ -106,10 +108,6 @@ const Contact = () => {
               label: "Email",
               value: "eng.nazrizan@gmail.com",
               isEmail: true
-            }, {
-              Icon: PhoneIcon,
-              label: "Phone",
-              value: "+91 9539665011"
             }, {
               Icon: MapPinIcon,
               label: "Location",
