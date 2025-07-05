@@ -2,10 +2,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gluten&display=swap');
 :root {
   --cursor-bubble-color: #a9170a; 
   --background-color: #fffde8; 
@@ -21,7 +19,7 @@
 }
 
 html, body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Gluten', cursive;
   overflow-x: hidden;
   line-height: 1.6;
   font-weight: 400;

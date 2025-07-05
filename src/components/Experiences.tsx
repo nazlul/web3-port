@@ -15,7 +15,7 @@ const experiences = [
 
 const Experiences = () => {
   return (
-    <section id="experiences" className="bg-[#fffde8] py-20 px-4">
+    <section id="experiences" className="bg-[#fffde8]/80 py-20 px-4">
       <div className="mx-auto max-w-4xl text-center">
         <motion.h2
           initial={{ opacity: 0, y: 10 }}
